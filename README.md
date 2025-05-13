@@ -1,27 +1,80 @@
-# AngularJsonplaceholder
+# Angular JSONPlaceholder App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Une application Angular moderne qui consomme l'API JSONPlaceholder pour afficher des utilisateurs, des posts et des commentaires avec une interface utilisateur élégante.
 
-## Development server
+## Prérequis
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Avant de lancer le projet, assurez-vous d'avoir installé :
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/) (version 18 ou supérieure)
+- [npm](https://www.npmjs.com/) (généralement installé avec Node.js)
+- [Angular CLI](https://angular.io/cli) (version 17.3 ou supérieure)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Pour installer Angular CLI globalement, exécutez :
+```bash
+npm install -g @angular/cli
+```
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clonez le projet ou téléchargez-le sur votre machine
 
-## Running unit tests
+2. Ouvrez un terminal et naviguez jusqu'au dossier du projet :
+```bash
+cd chemin/vers/projet
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Installez les dépendances :
+```bash
+npm install
+```
 
-## Running end-to-end tests
+## Lancement du projet
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Pour démarrer le serveur de développement :
+```bash
+ng serve
+```
 
-## Further help
+L'application sera accessible à l'adresse [http://localhost:4200](http://localhost:4200)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Le serveur se relancera automatiquement si vous modifiez l'un des fichiers source.
+
+## Fonctionnalités
+
+- 🏠 Page d'accueil avec liste des utilisateurs
+- 🔍 Barre de recherche pour filtrer les utilisateurs
+- 👤 Page de détail utilisateur avec informations complètes
+- 📝 Liste des posts de chaque utilisateur
+- 💬 Commentaires sur les posts
+- 🎨 Interface utilisateur moderne et responsive
+- ⚡ Chargement dynamique des données
+
+## Structure du projet
+
+- `src/app/core` : Services et modèles de données
+- `src/app/pages` : Composants principaux
+- `src/app/shared` : Composants et modules partagés
+
+## API Utilisée
+
+L'application utilise [JSONPlaceholder](https://jsonplaceholder.typicode.com/) comme API de test avec les endpoints suivants :
+
+- `/users` : Liste des utilisateurs
+- `/posts` : Liste des posts
+- `/comments` : Liste des commentaires
+
+## Technologies utilisées
+
+- Angular 17
+- TypeScript
+- RxJS
+- Angular Material UI
+- SCSS
+
+## Scripts disponibles
+
+- `ng serve` : Lance le serveur de développement
+- `ng build` : Compile l'application
+- `ng test` : Lance les tests unitaires
+- `ng lint` : Vérifie le code avec le linter
