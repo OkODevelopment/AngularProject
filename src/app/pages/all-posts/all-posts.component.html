@@ -1,0 +1,52 @@
+<div class="container">
+  <header class="page-header">
+    <h1><span class="material-icons">article</span> Tous les Posts</h1>
+    <p class="subtitle">Explorez les publications de notre communauté</p>
+  </header>
+
+  <div class="search-bar">
+    <span class="material-icons">search</span>
+    <input type="text" placeholder="Rechercher un post..." [(ngModel)]="searchTerm" (input)="filterPosts()">
+  </div>
+
+  <div *ngIf="!loading && !error" class="grid fade-in">
+    <div *ngFor="let post of filteredPosts" class="card post-card">
+      <div class="post-header">
+        <div class="author-info" *ngIf="post.author" (click)="goToUser(post.author.id)">
+          <span class="material-icons">account_circle</span>
+          <span class="author-name">{{ post.author.name }}</span>
+        </div>
+        <div class="post-actions">
+          <button class="btn btn-icon" (click)="toggleFavorite(post)" [class.favorite]="post.isFavorite">
+            <span class="material-icons">{{ post.isFavorite ? 'favorite' : 'favorite_border' }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="post-content" (click)="goToPost(post.id)">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body | slice:0:150 }}...</p>
+      </div>
+
+      <div class="post-footer">
+        <button class="btn btn-primary" (click)="goToPost(post.id)">
+          <span class="material-icons">visibility</span>
+          Lire la suite
+        </button>
+        <button class="btn btn-secondary" *ngIf="post.author" (click)="goToUser(post.author.id)">
+          <span class="material-icons">person</span>
+          Voir l'auteur
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <span class="material-icons">error</span>
+    {{ error }}
+  </div>
+</div>

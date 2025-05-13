@@ -1,0 +1,49 @@
+<div class="container">
+  <header class="page-header">
+    <h1><span class="material-icons">group</span> Utilisateurs</h1>
+    <p class="subtitle">Découvrez notre communauté d'utilisateurs</p>
+  </header>
+
+  <div class="search-bar">
+    <span class="material-icons">search</span>
+    <input type="text" placeholder="Rechercher un utilisateur..." [(ngModel)]="searchTerm" (input)="filterUsers()">
+  </div>
+  
+  <div *ngIf="!loading; else loadingTemplate" class="grid fade-in">
+    <div *ngFor="let user of filteredUsers" class="card user-card" (click)="goToUser(user.id)">
+      <div class="user-avatar">
+        <span class="material-icons">account_circle</span>
+      </div>
+      <div class="user-info">
+        <h2>{{ user.name }}</h2>
+        <div class="user-detail">
+          <span class="material-icons">email</span>
+          <p>{{ user.email }}</p>
+        </div>
+        <div class="user-detail">
+          <span class="material-icons">business</span>
+          <p>{{ user.company.name }}</p>
+        </div>
+        <div class="user-detail">
+          <span class="material-icons">language</span>
+          <p>{{ user.website }}</p>
+        </div>
+      </div>
+      <button class="btn btn-primary">
+        <span class="material-icons">visibility</span>
+        Voir le profil
+      </button>
+    </div>
+  </div>
+
+  <ng-template #loadingTemplate>
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </ng-template>
+
+  <div *ngIf="error" class="error-message">
+    <span class="material-icons">error</span>
+    {{ error }}
+  </div>
+</div>

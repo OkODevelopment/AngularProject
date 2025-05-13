@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="post-detail" *ngIf="!loading && post">
+    <div class="author-info" *ngIf="author">
+      <p class="author" (click)="goToUser(author.id)">Par: {{ author.name }}</p>
+    </div>
+    
+    <h1>{{ post.title }}</h1>
+    <p class="post-content">{{ post.body }}</p>
+
+    <div class="comments-section" *ngIf="comments.length > 0">
+      <h2>Commentaires</h2>
+      <div class="comments-list">
+        <div *ngFor="let comment of comments" class="comment">
+          <h4>{{ comment.name }}</h4>
+          <p class="comment-email">{{ comment.email }}</p>
+          <p class="comment-body">{{ comment.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Chargement du post...
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+</div>
